@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mongo-querygen.iml" filepath="$PROJECT_DIR$/.idea/modules/mongo-querygen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mongo-querygen_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mongo-querygen_main.iml" group="mongo-querygen" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mongo-querygen_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mongo-querygen_test.iml" group="mongo-querygen" />
+    </modules>
+  </component>
+</project>
