@@ -1,5 +1,7 @@
 package edu.umass.cs.mongoquerygen.main;
 
+import edu.umass.cs.mongoquerygen.parser.ParseExpression;
+
 /**
  * Give a flat query, convert it to mongo query.
  * Created by kanantharamu on 11/23/17.
@@ -20,6 +22,11 @@ public class MongoQueryGen
 
     private void setFlatQuery(String flatQuery) {
         this.flatQuery = flatQuery;
+    }
+
+    public String generate()
+    {
+        return ParseExpression.toQuery(flatQuery);
     }
 
 
