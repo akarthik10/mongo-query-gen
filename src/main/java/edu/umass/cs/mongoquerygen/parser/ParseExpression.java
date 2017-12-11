@@ -133,13 +133,14 @@ public class ParseExpression
             }
         });
 
-        addFunction(new Function("distance_between_points", 3) {
+        addFunction(new Function("distance_between_points", 4) {
             @Override
             public String eval(List<String> params) {
                 String field = params.get(0);
                 String geo = params.get(1);
-                String distance = params.get(2);
-                return "{" + field + ": { $near : { $geometry: "+geo+"}, $maxDistance: "+distance+" }}";
+                String minDistance = params.get(2);
+                String maxDistance = params.get(3);
+                return "{" + field + ": { $near : { $geometry: "+geo+"}, $maxDistance: "+maxDistance+", $minDistance: "+minDistance+" }}";
             }
         });
     }
