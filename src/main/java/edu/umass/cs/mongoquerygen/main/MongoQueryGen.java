@@ -26,7 +26,12 @@ public class MongoQueryGen
 
     public String generate()
     {
-        return ParseExpression.toQuery(flatQuery);
+        String generated = ParseExpression.toQuery(flatQuery);
+        if (generated.startsWith("{") && generated.endsWith("}"))
+        {
+            generated = generated.substring(1, generated.length()-1);
+        }
+        return generated;
     }
 
 
