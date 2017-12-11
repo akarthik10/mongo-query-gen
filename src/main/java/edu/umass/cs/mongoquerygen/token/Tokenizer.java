@@ -73,8 +73,8 @@ public class Tokenizer implements Iterator<Token>
             token.tokenType = VARIABLE;
         }
         // Starting character of a field name
-        else if (Character.isLetter(ch) || ch == '~') {
-            while (Character.isLetter(ch) || variableAllowed.indexOf(ch) >= 0 || functionAllowed.indexOf(ch)>= 0)
+        else if (Character.isLetter(ch) || ch == '~' || Character.isDigit(ch)) {
+            while (Character.isLetter(ch) || variableAllowed.indexOf(ch) >= 0 || functionAllowed.indexOf(ch)>= 0 || Character.isDigit(ch))
             {
                 token.append(expression.charAt(pos++));
                 ch = pos == expression.length() ? 0 : expression.charAt(pos);
