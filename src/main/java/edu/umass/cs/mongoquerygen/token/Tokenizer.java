@@ -71,6 +71,25 @@ public class Tokenizer implements Iterator<Token>
             token.append(ch);
             pos++;
             token.tokenType = VARIABLE;
+        } else if (ch == '"' )
+        {
+            token.append(expression.charAt(pos++));
+            ch = expression.charAt('"');
+
+            while (ch != '"' && pos < expression.length())
+            {
+                token.append(expression.charAt(pos++));
+                ch = pos == expression.length() ? 0 : expression.charAt(pos);
+            }
+
+            if (ch != '"')
+            {
+                throw new RuntimeException("Unmatched quotes");
+            }
+
+            token.append(ch);
+            pos++;
+            token.tokenType = PARAM_LITERAL;
         }
         // Starting character of a field name
         else if (Character.isLetter(ch) || ch == '~' || Character.isDigit(ch)) {
