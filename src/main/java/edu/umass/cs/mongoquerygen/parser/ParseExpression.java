@@ -133,7 +133,7 @@ public class ParseExpression
             }
         });
 
-        addFunction(new Function("distance_between", 3) {
+        addFunction(new Function("distance_between_points", 3) {
             @Override
             public String eval(List<String> params) {
                 String field = params.get(0);
