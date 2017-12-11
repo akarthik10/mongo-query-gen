@@ -10,13 +10,7 @@ public class Main
     public static void main(String[] args) {
 
 
-        String expr = "and(\n" +
-                "\tgt(~user.wind.max, ${event.data.windspeed}),\n" +
-                "\tor(\n" +
-                "\t\teq(a, b),\n" +
-                "\t\tlocation_within_geo(~user.location, ${event.data.windpolygon})\n" +
-                "\t)\n" +
-                ")";
+        String expr = "gt(~user.temperature, ${temperature.value})";
 
         System.out.println(ParseExpression.toQuery(expr));
     }

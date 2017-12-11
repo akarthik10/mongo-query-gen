@@ -132,7 +132,18 @@ public class ParseExpression
 
             }
         });
+
+        addFunction(new Function("distance_between", 3) {
+            @Override
+            public String eval(List<String> params) {
+                String field = params.get(0);
+                String geo = params.get(1);
+                String distance = params.get(2);
+                return "{" + field + ": { $near : { $geometry: "+geo+"}, $maxDistance: "+distance+" }}";
+            }
+        });
     }
+
 
     public static List<Token> convert(String expression)
     {
@@ -176,7 +187,7 @@ public class ParseExpression
                     }
                     if (stack.isEmpty())
                     {
-                        throw new RuntimeException("Mismatched parantheses");
+                        throw new RuntimeException("Mismatched parentheses");
                     }
                     stack.pop();
 
@@ -199,7 +210,7 @@ public class ParseExpression
             Token t = stack.pop();
             if (t.tokenType == Tokenizer.TokenType.OPEN_PARANTHESES || t.tokenType == Tokenizer.TokenType.CLOSE_PARANTHESES)
             {
-                throw new RuntimeException("Mismatched parantheses");
+                throw new RuntimeException("Mismatched parentheses");
             }
             output.add(t);
         }
