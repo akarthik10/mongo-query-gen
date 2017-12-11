@@ -140,7 +140,14 @@ public class ParseExpression
                 String geo = params.get(1);
                 String minDistance = params.get(2);
                 String maxDistance = params.get(3);
-                return "{" + field + ": { $near : { $geometry: "+geo+"}, $maxDistance: "+maxDistance+", $minDistance: "+minDistance+" }}";
+                return "{" + field + ": { " +
+                            "$near : { " +
+                                "$geometry: "+geo+", " +
+                                "$maxDistance: "+maxDistance+", " +
+                                "$minDistance: "+minDistance+
+                                "} " +
+                            "}" +
+                        "}";
             }
         });
     }
