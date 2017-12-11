@@ -233,6 +233,7 @@ public class ParseExpression
                     break;
                 case FUNCTION:
                     Function f = functions.get(token.content);
+
                     List<String> p = new ArrayList<String>(
                                             f.getNumParams() == Function.VARIABLE_NUM_PARAMS ? 0 : f.getNumParams()
                                             );
@@ -244,6 +245,11 @@ public class ParseExpression
                     if (stack.peek() == PARAM_START)
                     {
                         stack.pop();
+                    }
+
+                    if (f.getNumParams() != Function.VARIABLE_NUM_PARAMS && f.getNumParams()!=p.size())
+                    {
+                        throw new RuntimeException("Invalid number of parameters for '"+ f.getName() +"'");
                     }
 
                     String res = f.eval(p);
